@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJ_Core Wiki</title>
+
+    <style>
+        body{
+            margin:0;
+            font-family:Arial, Helvetica, sans-serif;
+            background:#121212;
+            color:white;
+        }
+
+        header{
+            background:#6d28d9;
+            padding:30px;
+            text-align:center;
+        }
+
+        header h1{
+            margin:0;
+            font-size:42px;
+        }
+
+        nav{
+            background:#1b1b1b;
+            text-align:center;
+            padding:15px;
+        }
+
+        nav a{
+            color:white;
+            text-decoration:none;
+            margin:15px;
+            font-weight:bold;
+        }
+
+        nav a:hover{
+            color:#a855f7;
+        }
+
+        .container{
+            max-width:900px;
+            margin:auto;
+            padding:40px;
+        }
+
+        .card{
+            background:#1f1f1f;
+            border-radius:12px;
+            padding:25px;
+            margin-bottom:20px;
+        }
+
+        footer{
+            text-align:center;
+            padding:20px;
+            color:#888;
+        }
+
+        button{
+            background:#7c3aed;
+            color:white;
+            border:none;
+            padding:12px 24px;
+            border-radius:8px;
+            cursor:pointer;
+            font-size:16px;
+        }
+
+        button:hover{
+            background:#9333ea;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<header>
+    <h1>EJ_Core</h1>
+    <p>Official Documentation</p>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Commands</a>
+    <a href="#">Configuration</a>
+    <a href="#">Permissions</a>
+    <a href="#">FAQ</a>
+</nav>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Welcome!</h2>
+
+        <p>
+            Welcome to the official documentation of EJ_Core.
+        </p>
+
+        <button onclick="hello()">
+            Click Me
+        </button>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Erfan_Jigar
+</footer>
+
+<script>
+
+function hello(){
+    alert("Welcome to EJ_Core Wiki!");
+}
+
+</script>
+
+</body>
+</html>
