@@ -7,10 +7,10 @@
     <title>EJ_Core - Premium Minecraft Core Plugin Documentation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="icon.png">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Poppins:wght@600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="icon" href="icon.png">
     <style>
         :root {
             --bg: #0b1120;
@@ -1252,7 +1252,10 @@
                     entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.2 });
+        }, {
+            threshold: 0.05,
+            rootMargin: "100px"
+        });
 
         document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
     </script>
