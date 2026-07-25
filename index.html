@@ -3,718 +3,749 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EJ_Core - Advanced Minecraft Core Plugin</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>EJ_Core - Premium Minecraft Core Plugin Documentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg: #0b1120;
+            --surface: #111827;
+            --surface-light: #1a2332;
+            --accent: #00c2ff;
+            --accent-soft: #0099ff;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border: #1e293b;
+            --glow: 0 0 20px rgba(0,194,255,0.15);
+            --radius: 16px;
+            --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        :root {
-            --bg-primary: #0a0e17;
-            --bg-secondary: #111827;
-            --bg-card: rgba(17, 25, 40, 0.75);
-            --bg-card-hover: rgba(30, 41, 59, 0.8);
-            --border-card: rgba(59, 130, 246, 0.15);
-            --border-card-hover: rgba(59, 130, 246, 0.35);
-            --text-primary: #e2e8f0;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
-            --accent: #3b82f6;
-            --accent-light: #60a5fa;
-            --accent-glow: rgba(59, 130, 246, 0.3);
-            --accent-glow-strong: rgba(59, 130, 246, 0.5);
-            --gradient-1: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            --gradient-2: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --radius-xl: 20px;
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-            --shadow-glow: 0 0 30px var(--accent-glow);
-            --transition-fast: 0.2s ease;
-            --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
         html {
             scroll-behavior: smooth;
         }
-
         body {
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.7;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
-
-        .bg-glow {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.15;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .bg-glow-1 {
-            width: 500px;
-            height: 500px;
-            background: var(--accent);
-            top: -150px;
-            right: -150px;
-        }
-        .bg-glow-2 {
-            width: 400px;
-            height: 400px;
-            background: #8b5cf6;
-            bottom: -100px;
-            left: -100px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            position: relative;
-            z-index: 1;
-        }
-
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(10, 14, 23, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
-            transition: var(--transition-smooth);
-        }
-        nav.scrolled {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
-        .nav-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 14px 0;
-            flex-wrap: wrap;
-        }
-        .nav-logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            list-style: none;
-        }
-        .nav-links a {
-            color: var(--text-secondary);
+        a {
             text-decoration: none;
-            padding: 8px 14px;
-            border-radius: var(--radius-sm);
-            transition: var(--transition-smooth);
-            font-size: 0.9rem;
-            font-weight: 500;
+            color: inherit;
         }
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--text-primary);
-            background: rgba(59, 130, 246, 0.12);
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
-
-        .hero {
-            text-align: center;
-            padding: 100px 0 80px;
-            position: relative;
+        h1,h2,h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
         }
-        .hero-logo {
-            width: 90px;
-            height: 90px;
-            background: var(--gradient-1);
-            border-radius: var(--radius-xl);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: #fff;
-            margin-bottom: 28px;
-            box-shadow: var(--shadow-glow);
-        }
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            letter-spacing: -1px;
-            margin-bottom: 16px;
-            background: var(--gradient-1);
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff, #94a3b8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            max-width: 650px;
-            margin: 0 auto 36px;
+        .section {
+            padding: 5rem 0;
         }
-        .btn-group {
-            display: flex;
-            gap: 14px;
-            justify-content: center;
-            flex-wrap: wrap;
+        .section-alt {
+            background: rgba(17,24,39,0.6);
         }
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 13px 28px;
-            border-radius: var(--radius-md);
+            gap: 0.5rem;
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
             font-weight: 600;
             font-size: 1rem;
-            text-decoration: none;
-            transition: var(--transition-smooth);
+            letter-spacing: 0.3px;
+            transition: var(--transition);
             cursor: pointer;
             border: none;
-            white-space: nowrap;
+            outline: none;
+            text-transform: uppercase;
         }
         .btn-primary {
-            background: var(--gradient-1);
+            background: linear-gradient(135deg, #00c2ff, #007bff);
             color: #fff;
-            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 4px 15px rgba(0,194,255,0.3);
         }
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.55);
+            box-shadow: 0 8px 25px rgba(0,194,255,0.5);
         }
-        .btn-secondary {
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--accent-light);
-            border: 1px solid rgba(59, 130, 246, 0.3);
+        .btn-outline {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            background: transparent;
         }
-        .btn-secondary:hover {
-            background: rgba(59, 130, 246, 0.2);
-            border-color: rgba(59, 130, 246, 0.5);
+        .btn-outline:hover {
+            background: rgba(0,194,255,0.08);
         }
-
-        .section {
-            padding: 80px 0;
+        .btn-sm {
+            padding: 0.6rem 1.5rem;
+            font-size: 0.9rem;
         }
-        .section-title {
-            font-size: 2.2rem;
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(11,17,32,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            transition: box-shadow var(--transition);
+        }
+        nav.scrolled {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
             font-weight: 800;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #00c2ff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .section-subtitle {
-            color: var(--text-secondary);
-            margin-bottom: 48px;
-            font-size: 1.05rem;
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
         }
-
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: color var(--transition);
+            font-size: 0.95rem;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--text);
+            transition: var(--transition);
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        @media (max-width: 1024px) {
+            .hamburger {
+                display: flex;
+            }
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(11,17,32,0.95);
+                backdrop-filter: blur(12px);
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 1.5rem;
+                border-bottom: 1px solid var(--border);
+                display: none;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+        }
+        .hero {
+            padding: 7rem 0 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(0,194,255,0.08) 0%, transparent 50%);
+            animation: rotate 25s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .hero h1 {
+            font-size: clamp(3.5rem, 8vw, 6rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, #00c2ff, #ffffff 70%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+        .hero .subtitle {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+        .hero .desc {
+            font-size: 1.1rem;
+            color: #7f8ea3;
+            max-width: 650px;
+            margin: 0 auto 2.5rem;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
         .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-card);
-            border-radius: var(--radius-lg);
-            padding: 28px;
-            transition: var(--transition-smooth);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: var(--transition);
         }
         .card:hover {
-            border-color: var(--border-card-hover);
-            background: var(--bg-card-hover);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+            box-shadow: var(--glow);
+            border-color: var(--accent-soft);
         }
-        .card-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: var(--radius-md);
-            background: rgba(59, 130, 246, 0.12);
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .feature-card {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        .feature-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            background: rgba(0,194,255,0.1);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
-            color: var(--accent-light);
-            margin-bottom: 16px;
         }
-        .card h3 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            margin-bottom: 8px;
+        .feature-icon svg {
+            width: 26px;
+            height: 26px;
+            fill: var(--accent);
         }
-        .card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
+        .feature-text h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: #fff;
         }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+        .feature-text p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+        .platform-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
         }
-
-        .accordion {
-            border: 1px solid var(--border-card);
-            border-radius: var(--radius-lg);
+        .badge {
+            background: var(--surface-light);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 0.7rem 1.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+        .badge:hover {
+            border-color: var(--accent);
+            background: rgba(0,194,255,0.05);
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 2rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--surface);
+            border-radius: var(--radius);
             overflow: hidden;
-            background: var(--bg-card);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+        }
+        th, td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background: var(--surface-light);
+            color: var(--accent);
+            font-weight: 600;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
         }
         .accordion-item {
-            border-bottom: 1px solid rgba(59, 130, 246, 0.08);
-        }
-        .accordion-item:last-child {
-            border-bottom: none;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
         }
         .accordion-header {
             width: 100%;
-            background: none;
+            background: transparent;
             border: none;
-            color: var(--text-primary);
-            padding: 20px 24px;
+            padding: 1.5rem;
             text-align: left;
             font-size: 1rem;
             font-weight: 600;
-            cursor: pointer;
+            color: #fff;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            transition: var(--transition-smooth);
+            align-items: center;
+            cursor: pointer;
         }
-        .accordion-header:hover {
-            background: rgba(59, 130, 246, 0.05);
+        .accordion-header span {
+            transition: transform var(--transition);
         }
-        .accordion-header i {
-            transition: var(--transition-smooth);
-            color: var(--accent-light);
-        }
-        .accordion-item.open .accordion-header i {
-            transform: rotate(180deg);
+        .accordion-header.active span {
+            transform: rotate(45deg);
         }
         .accordion-body {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-muted);
+            display: none;
         }
-        .accordion-item.open .accordion-body {
-            max-height: 300px;
-            padding: 0 24px 20px;
+        .accordion-body.open {
+            display: block;
         }
-        .accordion-body p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
+        .timeline {
+            margin-top: 2rem;
+            position: relative;
+            padding-left: 2rem;
         }
-
-        .platform-badges {
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-left: 2rem;
+        }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -4px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--accent);
+        }
+        .support-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 2rem;
             display: flex;
-            gap: 12px;
+            align-items: center;
+            gap: 2rem;
             flex-wrap: wrap;
-            margin-bottom: 24px;
+            margin-top: 2rem;
         }
-        .platform-badge {
+        .discord-id {
+            background: #5865F2;
+            color: white;
+            padding: 0.6rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            padding: 8px 16px;
+            gap: 0.5rem;
+        }
+        .copy-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 0.4rem 1rem;
             border-radius: 50px;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--accent-light);
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            margin-left: 0.5rem;
         }
-
-        .footer {
-            border-top: 1px solid rgba(59, 130, 246, 0.1);
-            padding: 48px 0 32px;
+        .copy-btn:hover {
+            background: rgba(255,255,255,0.15);
+        }
+        footer {
             text-align: center;
+            padding: 2.5rem;
             color: var(--text-muted);
+            border-top: 1px solid var(--border);
         }
-        .footer-links {
-            display: flex;
-            gap: 24px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: var(--transition-fast);
-        }
-        .footer-links a:hover {
-            color: var(--accent-light);
-        }
-        .footer-social {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .footer-social a {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-light);
-            font-size: 1.2rem;
-            transition: var(--transition-smooth);
-            text-decoration: none;
-        }
-        .footer-social a:hover {
-            background: rgba(59, 130, 246, 0.2);
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        .fade-in {
+        .fade-up {
             opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
-        .fade-in.visible {
+        .fade-up.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.4rem;
-            }
-            .hero p {
-                font-size: 1rem;
-            }
-            .nav-links {
-                gap: 2px;
-            }
-            .nav-links a {
-                padding: 6px 10px;
-                font-size: 0.8rem;
-            }
             .section {
-                padding: 48px 0;
+                padding: 3rem 0;
             }
-            .section-title {
-                font-size: 1.7rem;
+            h2 {
+                font-size: 1.8rem;
+            }
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="bg-glow bg-glow-1"></div>
-    <div class="bg-glow bg-glow-2"></div>
-
     <nav id="navbar">
-        <div class="container nav-inner">
-            <a href="#home" class="nav-logo"><i class="fas fa-cube"></i> EJ_Core</a>
-            <ul class="nav-links">
-                <li><a href="#home" class="active">Home</a></li>
+        <div class="nav-container">
+            <a href="#home" class="logo">EJ_Core</a>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#features">Features</a></li>
+                <li><a href="#platforms">Platforms</a></li>
                 <li><a href="#installation">Installation</a></li>
+                <li><a href="#getting-started">Getting Started</a></li>
                 <li><a href="#commands">Commands</a></li>
                 <li><a href="#permissions">Permissions</a></li>
-                <li><a href="#platforms">Platforms</a></li>
                 <li><a href="#integrations">Integrations</a></li>
+                <li><a href="#updates">Updates</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#support">Support</a></li>
-                <li><a href="#changelog">Changelog</a></li>
             </ul>
         </div>
     </nav>
 
     <section id="home" class="hero">
         <div class="container">
-            <div class="hero-logo">EJ</div>
             <h1>EJ_Core</h1>
-            <p>The advanced all-in-one Minecraft Core plugin designed for modern servers. Packed with essential features, beautiful GUIs, and seamless integrations—all optimized for performance.</p>
-            <div class="btn-group">
-                <a href="#" class="btn btn-primary"><i class="fas fa-download"></i> Download</a>
-                <a href="#about" class="btn btn-secondary"><i class="fas fa-book"></i> Documentation</a>
+            <p class="subtitle">Advanced All-in-One Minecraft Core Plugin</p>
+            <p class="desc">A powerful, fully configurable core solution built for modern Minecraft servers. Streamline administration, enhance gameplay, and unify essential systems in one premium plugin.</p>
+            <div class="hero-buttons">
+                <a href="https://builtbybit.com/resources/ej-core-all-in-one-core.117277/" target="_blank" class="btn btn-primary">Buy on BuiltByBit</a>
+                <a href="#features" class="btn btn-outline">View Documentation</a>
             </div>
         </div>
     </section>
 
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title fade-in">About EJ_Core</h2>
-            <p class="section-subtitle fade-in">A modern core plugin built for server owners who demand flexibility and reliability.</p>
-            <div class="info-grid">
-                <div class="card fade-in">
-                    <div class="card-icon"><i class="fas fa-rocket"></i></div>
-                    <h3>Performance First</h3>
-                    <p>EJ_Core is built from the ground up with performance as a priority. Every feature is optimized to run efficiently without causing lag.</p>
-                </div>
-                <div class="card fade-in">
-                    <div class="card-icon"><i class="fas fa-puzzle-piece"></i></div>
-                    <h3>Highly Configurable</h3>
-                    <p>Toggle features on and off independently. Customize messages, sounds, titles, action bars, and GUI layouts to match your server's identity.</p>
-                </div>
-                <div class="card fade-in">
-                    <div class="card-icon"><i class="fas fa-plug"></i></div>
-                    <h3>Seamless Integrations</h3>
-                    <p>Works out of the box with PlaceholderAPI, LuckPerms, Vault, PacketEvents, ProtocolLib, and Simple Voice Chat.</p>
-                </div>
-                <div class="card fade-in">
-                    <div class="card-icon"><i class="fas fa-shield-halved"></i></div>
-                    <h3>Secure & Reliable</h3>
-                    <p>Includes anti-exploit protections, command blocking, account protection, and regular updates to keep your server safe.</p>
-                </div>
-            </div>
+    <section id="about" class="section section-alt">
+        <div class="container fade-up">
+            <h2>About EJ_Core</h2>
+            <p style="max-width:800px;color:var(--text-muted);font-size:1.1rem;">EJ_Core is a meticulously engineered core plugin designed for Minecraft server owners who demand reliability, performance, and a unified administrative experience. It replaces dozens of fragmented plugins with a single cohesive system, offering everything from teleportation and economy to advanced anti‑cheat and GUI menus. Built for Paper, Spigot, and Folia with seamless integration into the modern Minecraft ecosystem.</p>
         </div>
     </section>
 
     <section id="features" class="section">
-        <div class="container">
-            <h2 class="section-title fade-in">Features</h2>
-            <p class="section-subtitle fade-in">Explore the powerful feature categories included in EJ_Core.</p>
-            <div class="features-grid">
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-comments"></i></div><h3>Chat System</h3><p>Customizable chat format with LuckPerms prefix, hover effects, click actions, mentions, anti-spam, and blocked words filtering.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-location-dot"></i></div><h3>Spawn System</h3><p>Create multiple spawn points with custom GUI menus, forced spawn on join, and teleport delays with boss bar support.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-house"></i></div><h3>Homes</h3><p>Players can set up to 100 homes with permission-based limits. Beautiful GUI for managing, teleporting, and deleting homes.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-door-open"></i></div><h3>Warps</h3><p>Server-wide warp locations with customizable icons and slots in an intuitive teleportation menu.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-paper-plane"></i></div><h3>TPA</h3><p>Full TPA and TPAHere system with auto-accept, accept menu, and per-player settings for teleport requests.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-coins"></i></div><h3>Economy Integration</h3><p>Built-in economy provider with Vault support. Commands for balance, pay, baltop GUI, and admin economy management.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-swords"></i></div><h3>Combat System</h3><p>Combat tagging with boss bar timer, blocked commands during combat, kill messages, and customizable combat duration.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-clock"></i></div><h3>AFK System</h3><p>Automatic AFK detection with configurable timeout, titles, action bars, boss bars, and sounds for enter and exit states.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-bullhorn"></i></div><h3>Broadcasts</h3><p>Timed announcements with custom messages, titles, action bars, and sounds. Multiple broadcast schedules supported.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-gavel"></i></div><h3>Staff Tools</h3><p>Freeze, god mode, heal, feed, repair, fly speed control, gamemode shortcuts, and crash command for client testing.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-toolbox"></i></div><h3>Admin Utilities</h3><p>Admin inventory viewer, ender chest viewer, clear chat, server status display, and comprehensive reload command.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-ban"></i></div><h3>Anti Exploit</h3><p>Anti-Xray with ESP, ghost block fixer, account protection, command blocker, tab complete manager, and version/mod blockers.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-microphone"></i></div><h3>Voice Chat Integration</h3><p>Built-in support for Simple Voice Chat with ban and unban commands for voice communication management.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-code"></i></div><h3>PlaceholderAPI Support</h3><p>Exposes multiple placeholders for playtime, money, stats, and more, allowing seamless integration with other plugins.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-crown"></i></div><h3>LuckPerms Support</h3><p>Full integration with LuckPerms for prefixes, groups, and permission-based home limits and feature access.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-vault"></i></div><h3>Vault Support</h3><p>Acts as a Vault economy provider when no other economy plugin is present, ensuring compatibility with any economy-dependent plugin.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-network-wired"></i></div><h3>PacketEvents Integration</h3><p>Uses PacketEvents for anti-report popup, client brand detection, and efficient packet handling for modern Minecraft versions.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-sliders"></i></div><h3>Highly Configurable</h3><p>Every major system can be toggled, customized, and fine-tuned through a single config.yml file with detailed comments.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-gauge-high"></i></div><h3>Performance Optimized</h3><p>Built with modern APIs, supports Paper, Purpur, and Folia with a unified scheduler for maximum compatibility and performance.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-chart-simple"></i></div><h3>bStats Integration</h3><p>Anonymous usage statistics via bStats to help track plugin adoption and guide future development priorities.</p></div>
+        <div class="container fade-up">
+            <h2>Key Features</h2>
+            <div class="feature-grid">
+                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div><div class="feature-text"><h3>Homes</h3><p>Multiple home locations per player with GUI management.</p></div></div>
+                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg></div><div class="feature-text"><h3>Spawn</h3><p>Multiple spawn points, per-world settings, and join actions.</p></div></div>
+                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z"/></svg></div><div class="feature-text"><h3>Warps</h3><p>Custom warp locations with GUI and permission control.</p></div></div>
+                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M15 10l-4 4l-4-4"/></svg></div><div class="feature-text"><h3>TPA System</h3><p>Full teleport request system with accept/deny and auto modes.</p></div></div>
+                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg></div><div class="feature-text"><h3>Economy</h3><p>Integrated economy with Vault support, payments, and baltop.</p></div></div>
+                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2z"/></svg></div><div class="feature-text"><h3>Chat System</h3><p>Formatted chat, mentions, anti‑spam, blocked words, and cooldowns.</p></div></div>
+                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg></div><div class="feature-text"><h3>Staff Tools</h3><p>Freeze, god mode, fly, heal, feed, inventory viewer, and more.</p></div></div>
+                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.49.49 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94L14.4 3.4a.5.5 0 00-.48-.4H9.6a.5.5 0 00-.48.4l-.36 2.7c-.59.24-1.13.57-1.62.94l-2.39-.96a.49.49 0 00-.59.22L2.84 9.04c-.12.2-.07.44.12.61l2.03 1.58c-.04.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.7c.04.24.24.4.48.4h3.84c.24 0 .44-.16.48-.4l.36-2.7c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.44-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg></div><div class="feature-text"><h3>Admin Utilities</h3><p>Powerful admin commands, gamemode shortcuts, and crash tool.</p></div></div>
+                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M3 21v-4h18v4H3zm0-6v-4h18v4H3zm0-6V5h18v4H3z"/></svg></div><div class="feature-text"><h3>Broadcasts</h3><p>Automated announcements with sounds, titles, and action bars.</p></div></div>
+                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg></div><div class="feature-text"><h3>Settings Menu</h3><p>Per‑player togglable settings via interactive GUI.</p></div></div>
+                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M16 11V3H8v8H2v10h20V11h-6zm-6 8h-2v-6h2v6zm6 0h-2v-6h2v6z"/></svg></div><div class="feature-text"><h3>Player Statistics</h3><p>Track playtime, blocks, mobs, deaths, and more.</p></div></div>
+                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg></div><div class="feature-text"><h3>Reports</h3><p>Player and server reporting with admin notifications.</p></div></div>
+                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div><div class="feature-text"><h3>Join/Quit Features</h3><p>Custom join/quit messages, first‑join tracker, avatar heads, and more.</p></div></div>
+                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2l-5.5 9h11L12 2zm0 3.84L13.93 9h-3.87L12 5.84zM17.5 13c-2.49 0-4.5 2.01-4.5 4.5s2.01 4.5 4.5 4.5 4.5-2.01 4.5-4.5-2.01-4.5-4.5-4.5zm0 7c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zM3 21.5h8v-8H3v8zm2-6h4v4H5v-4z"/></svg></div><div class="feature-text"><h3>Protection & Anti‑Exploit</h3><p>Anti‑Xray, ghost block fixer, crystal accelerator, account protection, and anti‑ESP.</p></div></div>
+                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 2h2v6h-2V5zm0 8h2v2h-2v-2z"/></svg></div><div class="feature-text"><h3>GUI Menus</h3><p>Fully configurable dynamic menus with custom commands and actions.</p></div></div>
+                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.49.49 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94L14.4 3.4a.5.5 0 00-.48-.4H9.6a.5.5 0 00-.48.4l-.36 2.7c-.59.24-1.13.57-1.62.94l-2.39-.96a.49.49 0 00-.59.22L2.84 9.04c-.12.2-.07.44.12.61l2.03 1.58c-.04.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.7c.04.24.24.4.48.4h3.84c.24 0 .44-.16.48-.4l.36-2.7c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.44-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg></div><div class="feature-text"><h3>PlaceholderAPI Support</h3><p>Expose countless placeholders for seamless integration.</p></div></div>
+                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg></div><div class="feature-text"><h3>Vault Support</h3><p>Full economy integration with any Vault‑compatible provider.</p></div></div>
+                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div><div class="feature-text"><h3>LuckPerms Support</h3><p>Prefixes, groups, and context‑aware chat formatting.</p></div></div>
+                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div><div class="feature-text"><h3>Packet‑Based Features</h3><p>Advanced packet handling for anti‑cheat and performance.</p></div></div>
+                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 2h2v6h-2V5zm0 8h2v2h-2v-2z"/></svg></div><div class="feature-text"><h3>bStats Integration</h3><p>Anonymous usage statistics for continuous improvement.</p></div></div>
+                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 2h2v6h-2V5zm0 8h2v2h-2v-2z"/></svg></div><div class="feature-text"><h3>Highly Configurable</h3><p>Extensive YAML configuration files with per‑feature toggles.</p></div></div>
+                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.59-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z"/></svg></div><div class="feature-text"><h3>Performance Optimized</h3><p>Asynchronous operations, smart caching, and Folia compatibility.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="platforms" class="section section-alt">
+        <div class="container fade-up">
+            <h2>Supported Platforms</h2>
+            <div class="platform-badges">
+                <span class="badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> Paper</span>
+                <span class="badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> Spigot</span>
+                <span class="badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent)"><circle cx="12" cy="12" r="10"/></svg> Folia</span>
+                <span class="badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> 1.21.x</span>
             </div>
         </div>
     </section>
 
     <section id="installation" class="section">
-        <div class="container">
-            <h2 class="section-title fade-in">Installation</h2>
-            <p class="section-subtitle fade-in">Follow these simple steps to get EJ_Core running on your server.</p>
-            <div class="info-grid">
-                <div class="card fade-in">
-                    <div class="card-icon"><i class="fas fa-download"></i></div>
-                    <h3>Step 1</h3>
-                    <p>Download the latest EJ_Core.jar file from the official resource page.</p>
-                </div>
-                <div class="card fade-in">
-                    <div class="card-icon"><i class="fas fa-folder-open"></i></div>
-                    <h3>Step 2</h3>
-                    <p>Place the JAR file into your server's plugins folder.</p>
-                </div>
-                <div class="card fade-in">
-                    <div class="card-icon"><i class="fas fa-rotate"></i></div>
-                    <h3>Step 3</h3>
-                    <p>Restart your server or use a plugin manager to load EJ_Core.</p>
-                </div>
-                <div class="card fade-in">
-                    <div class="card-icon"><i class="fas fa-gear"></i></div>
-                    <h3>Step 4</h3>
-                    <p>Configure the plugin by editing the config.yml and messages.yml files to your liking.</p>
-                </div>
-            </div>
-            <div class="card fade-in" style="margin-top:24px">
-                <h3 style="margin-bottom:12px"><i class="fas fa-triangle-exclamation"></i> Requirements</h3>
-                <p>EJ_Core requires Paper 1.21+ (or Purpur). Folia is fully supported. Java 21 is required. Soft dependencies include PlaceholderAPI, LuckPerms, Vault, ProtocolLib, PacketEvents, and Simple Voice Chat—all optional but recommended for full functionality.</p>
-            </div>
+        <div class="container fade-up">
+            <h2>Installation</h2>
+            <ol style="max-width:700px;color:var(--text-muted);font-size:1.1rem;list-style-position:inside;">
+                <li>Purchase and download <strong>EJ_Core</strong> from <a href="https://builtbybit.com/resources/ej-core-all-in-one-core.117277/" style="color:var(--accent);">BuiltByBit</a>.</li>
+                <li>Place the <strong>EJ_Core.jar</strong> file into your server's <code>/plugins</code> folder.</li>
+                <li>Restart your server (or use a plugin manager).</li>
+                <li>Edit the generated configuration files inside <code>/plugins/EJ_Core/</code> to suit your needs.</li>
+                <li>Reload the plugin with <code>/ej_core reload</code> or restart the server.</li>
+            </ol>
+        </div>
+    </section>
+
+    <section id="getting-started" class="section section-alt">
+        <div class="container fade-up">
+            <h2>Getting Started</h2>
+            <p style="max-width:800px;color:var(--text-muted);font-size:1.1rem;">After installation, configure the core settings in <code>config.yml</code>. Enable the features you want, set up spawn points, warps, and permissions. Use <code>/ej_core reload</code> to apply changes instantly. Explore the <strong>Settings Menu</strong> via <code>/settings</code> to personalize player experience.</p>
         </div>
     </section>
 
     <section id="commands" class="section">
-        <div class="container">
-            <h2 class="section-title fade-in">Commands Overview</h2>
-            <p class="section-subtitle fade-in">EJ_Core provides a comprehensive set of commands for players and administrators.</p>
-            <div class="card fade-in">
-                <p>All commands are fully documented with usage information accessible in-game. The main administrative command is <strong>/ej_core</strong> (aliases: /ejc) which provides access to reload, economy management, spawn and warp administration, inventory viewing, crash testing, and more.</p>
-                <p style="margin-top:12px">Player commands include /home, /spawn, /warp, /tpa, /msg, /pay, /balance, /stats, /settings, /ping, /report, and many others—all with intuitive tab completion and comprehensive feedback messages.</p>
+        <div class="container fade-up">
+            <h2>Commands</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Command</th><th>Description</th></tr></thead>
+                    <tbody>
+                        <tr><td>/ej_core reload</td><td>Reload all configuration files</td></tr>
+                        <tr><td>/home [id]</td><td>Open home menu or teleport to a home</td></tr>
+                        <tr><td>/spawn [name]</td><td>Teleport to spawn or open spawn GUI</td></tr>
+                        <tr><td>/warp [name]</td><td>Teleport to warp or open warp GUI</td></tr>
+                        <tr><td>/tpa <player></td><td>Request to teleport to a player</td></tr>
+                        <tr><td>/tpaccept</td><td>Accept a teleport request</td></tr>
+                        <tr><td>/bed</td><td>Teleport to your bed</td></tr>
+                        <tr><td>/fly [speed]</td><td>Toggle flight or set speed</td></tr>
+                        <tr><td>/god [player]</td><td>Toggle god mode</td></tr>
+                        <tr><td>/heal [player]</td><td>Heal yourself or another player</td></tr>
+                        <tr><td>/freeze <player></td><td>Freeze or unfreeze a player</td></tr>
+                        <tr><td>/pay <player> <amount></td><td>Send money to a player</td></tr>
+                        <tr><td>/balance</td><td>Check your balance</td></tr>
+                        <tr><td>/baltop</td><td>View top balances</td></tr>
+                        <tr><td>/msg <player> <message></td><td>Send a private message</td></tr>
+                        <tr><td>/report <player|server> <reason></td><td>Submit a report</td></tr>
+                        <tr><td>/settings</td><td>Open personal settings GUI</td></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
 
-    <section id="permissions" class="section">
-        <div class="container">
-            <h2 class="section-title fade-in">Permissions Overview</h2>
-            <p class="section-subtitle fade-in">EJ_Core uses a straightforward permission system for access control.</p>
-            <div class="card fade-in">
-                <p>The primary permission node is <strong>ejcore.admin</strong> which grants full access to all administrative features. Additional permissions include ejcore.fly, ejcore.repair, ejcore.doublejump, and ejcore.home.limit.&lt;N&gt; for granular control over player capabilities.</p>
-                <p style="margin-top:12px">All permissions are documented in the plugin.yml file and can be managed through any permissions plugin such as LuckPerms.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="platforms" class="section">
-        <div class="container">
-            <h2 class="section-title fade-in">Supported Platforms</h2>
-            <p class="section-subtitle fade-in">EJ_Core runs on all major modern Minecraft server platforms.</p>
-            <div class="platform-badges fade-in">
-                <span class="platform-badge"><i class="fas fa-feather"></i> Paper</span>
-                <span class="platform-badge"><i class="fas fa-feather"></i> Purpur</span>
-                <span class="platform-badge"><i class="fas fa-leaf"></i> Folia</span>
-            </div>
-            <div class="card fade-in">
-                <p>EJ_Core uses a unified scheduler system that automatically detects the running platform and adapts accordingly. The plugin has been tested and optimized for Paper, Purpur, and Folia, ensuring consistent performance across all three environments.</p>
+    <section id="permissions" class="section section-alt">
+        <div class="container fade-up">
+            <h2>Permissions</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Permission</th><th>Description</th></tr></thead>
+                    <tbody>
+                        <tr><td>ejcore.admin</td><td>Access to all admin commands</td></tr>
+                        <tr><td>ejcore.fly</td><td>Use /fly command</td></tr>
+                        <tr><td>ejcore.repair</td><td>Use /repair command</td></tr>
+                        <tr><td>ejcore.doublejump</td><td>Use double jump feature</td></tr>
+                        <tr><td>ejcore.home.limit.X</td><td>Set max home slots (X = number)</td></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
 
     <section id="integrations" class="section">
-        <div class="container">
-            <h2 class="section-title fade-in">Integrations</h2>
-            <p class="section-subtitle fade-in">EJ_Core seamlessly integrates with popular Minecraft server tools.</p>
-            <div class="features-grid">
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-code"></i></div><h3>PlaceholderAPI</h3><p>Exposes multiple placeholders for player data, money, and statistics.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-crown"></i></div><h3>LuckPerms</h3><p>Full prefix, group, and permission integration for chat formatting and limits.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-vault"></i></div><h3>Vault</h3><p>Built-in economy provider ensures compatibility with any Vault-dependent plugin.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-network-wired"></i></div><h3>PacketEvents</h3><p>Modern packet handling for anti-report popup and client brand detection.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-microphone"></i></div><h3>Simple Voice Chat</h3><p>Voice communication management with ban and unban support.</p></div>
-                <div class="card fade-in"><div class="card-icon"><i class="fas fa-chart-simple"></i></div><h3>bStats</h3><p>Anonymous usage statistics for tracking plugin adoption.</p></div>
+        <div class="container fade-up">
+            <h2>Integrations</h2>
+            <div class="platform-badges">
+                <span class="badge">PlaceholderAPI</span>
+                <span class="badge">Vault</span>
+                <span class="badge">LuckPerms</span>
+                <span class="badge">bStats</span>
+                <span class="badge">ProtocolLib</span>
+                <span class="badge">packetevents</span>
+                <span class="badge">Simple Voice Chat</span>
             </div>
+        </div>
+    </section>
+
+    <section id="updates" class="section section-alt">
+        <div class="container fade-up">
+            <h2>Updates & Changelog</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3 style="color:var(--accent);">Version 1.1</h3>
+                    <p style="color:var(--text-muted);">Improvements and new features. (Full changelog coming soon)</p>
+                </div>
+                <div class="timeline-item">
+                    <h3 style="color:var(--accent);">Version 1.0</h3>
+                    <p style="color:var(--text-muted);">Initial release of EJ_Core.</p>
+                </div>
+            </div>
+            <p style="margin-top:1rem;color:var(--text-muted);">Detailed update notes will be posted here with each release.</p>
         </div>
     </section>
 
     <section id="faq" class="section">
-        <div class="container">
-            <h2 class="section-title fade-in">Frequently Asked Questions</h2>
-            <p class="section-subtitle fade-in">Quick answers to common questions about EJ_Core.</p>
-            <div class="accordion fade-in">
+        <div class="container fade-up">
+            <h2>Frequently Asked Questions</h2>
+            <div class="accordion">
                 <div class="accordion-item">
-                    <button class="accordion-header">Is EJ_Core compatible with Folia? <i class="fas fa-chevron-down"></i></button>
-                    <div class="accordion-body"><p>Yes, EJ_Core fully supports Folia through its built-in Scheduler Manager that automatically detects the platform and uses the appropriate scheduling API.</p></div>
+                    <button class="accordion-header">Does EJ_Core support Folia? <span>+</span></button>
+                    <div class="accordion-body">Yes, EJ_Core is fully compatible with Folia as well as Paper and Spigot.</div>
                 </div>
                 <div class="accordion-item">
-                    <button class="accordion-header">Can I disable features I don't need? <i class="fas fa-chevron-down"></i></button>
-                    <div class="accordion-body"><p>Absolutely. Every major system has an enabled flag in the config.yml file. You can toggle individual features on and off without affecting others.</p></div>
+                    <button class="accordion-header">Does it require Vault? <span>+</span></button>
+                    <div class="accordion-body">Vault is optional. Economy features are only enabled if Vault and an economy plugin are present.</div>
                 </div>
                 <div class="accordion-item">
-                    <button class="accordion-header">Does EJ_Core work with other core plugins? <i class="fas fa-chevron-down"></i></button>
-                    <div class="accordion-body"><p>Yes, but we recommend using EJ_Core as your only core plugin to avoid feature overlap and potential conflicts.</p></div>
+                    <button class="accordion-header">Does it support PlaceholderAPI? <span>+</span></button>
+                    <div class="accordion-body">Absolutely. EJ_Core provides many placeholders and fully supports PlaceholderAPI in messages.</div>
                 </div>
                 <div class="accordion-item">
-                    <button class="accordion-header">How do I get support? <i class="fas fa-chevron-down"></i></button>
-                    <div class="accordion-body"><p>Join our Discord server for community support, bug reports, and feature suggestions. Links are available in the Support section below.</p></div>
+                    <button class="accordion-header">Is it configurable? <span>+</span></button>
+                    <div class="accordion-body">Every feature can be toggled and customized via comprehensive YAML files.</div>
                 </div>
                 <div class="accordion-item">
-                    <button class="accordion-header">Is EJ_Core regularly updated? <i class="fas fa-chevron-down"></i></button>
-                    <div class="accordion-body"><p>Yes, EJ_Core receives regular updates with new features, improvements, and bug fixes. Check the Changelog section for details.</p></div>
+                    <button class="accordion-header">Is it suitable for modern Minecraft servers? <span>+</span></button>
+                    <div class="accordion-body">Yes, it is built for 1.21.x and designed with modern server software in mind.</div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">How do I get support? <span>+</span></button>
+                    <div class="accordion-body">Reach out on Discord: <strong style="color:var(--accent);">erfan_999</strong> or check the Support section below.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="support" class="section">
-        <div class="container">
-            <h2 class="section-title fade-in">Support</h2>
-            <p class="section-subtitle fade-in">We're here to help you get the most out of EJ_Core.</p>
-            <div class="info-grid">
-                <div class="card fade-in" style="text-align:center">
-                    <div class="card-icon" style="margin:0 auto 16px"><i class="fab fa-discord"></i></div>
-                    <h3>Discord</h3>
-                    <p>Join our community for real-time support and discussions.</p>
-                    <a href="#" class="btn btn-primary" style="margin-top:16px"><i class="fab fa-discord"></i> Join Discord</a>
-                </div>
-                <div class="card fade-in" style="text-align:center">
-                    <div class="card-icon" style="margin:0 auto 16px"><i class="fab fa-github"></i></div>
-                    <h3>GitHub</h3>
-                    <p>Report issues and track development on GitHub.</p>
-                    <a href="#" class="btn btn-secondary" style="margin-top:16px"><i class="fab fa-github"></i> View on GitHub</a>
-                </div>
-                <div class="card fade-in" style="text-align:center">
-                    <div class="card-icon" style="margin:0 auto 16px"><i class="fas fa-store"></i></div>
-                    <h3>BuiltByBit</h3>
-                    <p>Download and purchase EJ_Core on BuiltByBit.</p>
-                    <a href="#" class="btn btn-secondary" style="margin-top:16px"><i class="fas fa-download"></i> BuiltByBit</a>
+    <section id="support" class="section section-alt">
+        <div class="container fade-up">
+            <h2>Support</h2>
+            <div class="support-card">
+                <div>
+                    <p style="font-size:1.1rem;margin-bottom:1rem;">Need help? Contact the developer directly on Discord.</p>
+                    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:1rem;">
+                        <span class="discord-id">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M20.32 4.37a19.5 19.5 0 0 0-4.81-1.5.07.07 0 0 0-.08.04 13.4 13.4 0 0 0-.59 1.2 18.1 18.1 0 0 0-5.41 0 13.4 13.4 0 0 0-.6-1.2.07.07 0 0 0-.08-.04 19.5 19.5 0 0 0-4.81 1.5.07.07 0 0 0-.03.02C1.24 8.87.62 13.2.97 17.48a.08.08 0 0 0 .03.05 19.8 19.8 0 0 0 5.98 3.01.07.07 0 0 0 .08-.03 14.2 14.2 0 0 0 1.23-2 .07.07 0 0 0-.04-.1 13.1 13.1 0 0 1-1.88-.9.07.07 0 0 1 0-.12 9.9 9.9 0 0 0 .37-.29.07.07 0 0 1 .08 0 14.1 14.1 0 0 0 11.98 0 .07.07 0 0 1 .08 0c.13.11.25.22.38.3a.07.07 0 0 1 0 .11 13.1 13.1 0 0 1-1.88.9.07.07 0 0 0-.04.1c.37.73.78 1.4 1.23 2a.07.07 0 0 0 .08.03 19.7 19.7 0 0 0 5.99-3.01.07.07 0 0 0 .03-.05c.41-4.93-.68-9.2-2.87-13.09a.07.07 0 0 0-.03-.02ZM8.62 14.97c-.96 0-1.75-.89-1.75-1.97 0-1.08.77-1.97 1.75-1.97s1.77.89 1.75 1.97c0 1.08-.77 1.97-1.75 1.97Zm6.76 0c-.96 0-1.75-.89-1.75-1.97 0-1.08.77-1.97 1.75-1.97s1.77.89 1.75 1.97c0 1.08-.78 1.97-1.75 1.97Z"/></svg>
+                            erfan_999
+                        </span>
+                        <button class="copy-btn" onclick="navigator.clipboard.writeText('erfan_999').then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',2000)})">Copy</button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="changelog" class="section">
+    <footer>
         <div class="container">
-            <h2 class="section-title fade-in">Changelog</h2>
-            <p class="section-subtitle fade-in">Stay up to date with the latest changes and improvements.</p>
-            <div class="card fade-in">
-                <h3 style="margin-bottom:8px">Version 1.1</h3>
-                <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:12px">Released July 2026</p>
-                <p>Full Folia compatibility with unified scheduler system. Added Ping Alert feature with settings integration. Added F3 Brand customization. Enhanced command blocker and tab complete manager. Multiple bug fixes and performance improvements.</p>
-            </div>
-            <div class="card fade-in" style="margin-top:16px">
-                <h3 style="margin-bottom:8px">Version 1.0</h3>
-                <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:12px">Initial Release</p>
-                <p>Initial public release of EJ_Core with 40+ built-in features including homes, warps, spawn, TPA, economy, chat management, combat system, anti-xray, staff tools, GUI menus, and extensive integrations.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#features">Features</a>
-                <a href="#installation">Installation</a>
-                <a href="#faq">FAQ</a>
-                <a href="#support">Support</a>
-            </div>
-            <div class="footer-social">
-                <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
-                <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="#" title="BuiltByBit"><i class="fas fa-store"></i></a>
-            </div>
-            <p>&copy; 2026 EJ_Core. All rights reserved. Built with passion for the Minecraft community.</p>
+            <p>&copy; 2025 EJ_Core. All rights reserved. Built with passion for Minecraft server owners.</p>
         </div>
     </footer>
 
     <script>
         const navbar = document.getElementById('navbar');
-        const navLinks = document.querySelectorAll('.nav-links a');
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
         const sections = document.querySelectorAll('section[id]');
-        const fadeElements = document.querySelectorAll('.fade-in');
+        const navItems = document.querySelectorAll('.nav-links a');
 
         window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 20);
+            navbar.classList.toggle('scrolled', window.scrollY > 10);
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop - 100;
-                if (window.scrollY >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
+                if (window.scrollY >= sectionTop) current = section.getAttribute('id');
             });
-            navLinks.forEach(link => {
+            navItems.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
+                if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+            });
+        });
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        navItems.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const body = header.nextElementSibling;
+                header.classList.toggle('active');
+                body.classList.toggle('open');
+                const span = header.querySelector('span');
+                if (span) span.textContent = body.classList.contains('open') ? '−' : '+';
             });
         });
 
@@ -724,28 +755,9 @@
                     entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+        }, { threshold: 0.2 });
 
-        fadeElements.forEach(el => observer.observe(el));
-
-        document.querySelectorAll('.accordion-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const item = header.parentElement;
-                const isOpen = item.classList.contains('open');
-                document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
-                if (!isOpen) item.classList.add('open');
-            });
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
