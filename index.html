@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EJ_Core - Premium Minecraft Core Plugin Documentation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --bg: #0b1120;
@@ -17,18 +20,21 @@
             --text: #e2e8f0;
             --text-muted: #94a3b8;
             --border: #1e293b;
-            --glow: 0 0 20px rgba(0,194,255,0.15);
+            --glow: 0 0 20px rgba(0, 194, 255, 0.15);
             --radius: 16px;
-            --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         html {
             scroll-behavior: smooth;
         }
+
         body {
             font-family: 'Inter', sans-serif;
             background: var(--bg);
@@ -37,19 +43,25 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
+
         a {
             text-decoration: none;
             color: inherit;
         }
+
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 2rem;
         }
-        h1,h2,h3 {
+
+        h1,
+        h2,
+        h3 {
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
         }
+
         h2 {
             font-size: 2.2rem;
             margin-bottom: 1.5rem;
@@ -58,12 +70,15 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
         .section {
             padding: 5rem 0;
         }
+
         .section-alt {
-            background: rgba(17,24,39,0.6);
+            background: rgba(17, 24, 39, 0.6);
         }
+
         .btn {
             display: inline-flex;
             align-items: center;
@@ -79,48 +94,58 @@
             outline: none;
             text-transform: uppercase;
         }
+
         .btn-primary {
             background: linear-gradient(135deg, #00c2ff, #007bff);
             color: #fff;
-            box-shadow: 0 4px 15px rgba(0,194,255,0.3);
+            box-shadow: 0 4px 15px rgba(0, 194, 255, 0.3);
         }
+
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,194,255,0.5);
+            box-shadow: 0 8px 25px rgba(0, 194, 255, 0.5);
         }
+
         .btn-outline {
             border: 2px solid var(--accent);
             color: var(--accent);
             background: transparent;
         }
+
         .btn-outline:hover {
-            background: rgba(0,194,255,0.08);
+            background: rgba(0, 194, 255, 0.08);
         }
+
         .btn-sm {
             padding: 0.6rem 1.5rem;
             font-size: 0.9rem;
         }
+
         nav {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(11,17,32,0.9);
+            background: rgba(11, 17, 32, 0.9);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             transition: background 0.3s, box-shadow 0.3s;
         }
+
         nav.scrolled {
-            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-            background: rgba(11,17,32,0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            background: rgba(11, 17, 32, 0.98);
         }
+
         .nav-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 0.9rem 2rem;
             max-width: 1280px;
             margin: 0 auto;
+            gap: 10px;
         }
+
         .logo {
             font-family: 'Poppins', sans-serif;
             font-size: 1.8rem;
@@ -131,11 +156,15 @@
             background-clip: text;
             letter-spacing: -0.5px;
         }
+
         .nav-links {
             display: flex;
+            justify-content: center;
+            align-items: center;
             gap: 2rem;
             list-style: none;
         }
+
         .nav-links a {
             font-weight: 500;
             color: var(--text-muted);
@@ -144,9 +173,12 @@
             position: relative;
             padding: 0.25rem 0;
         }
-        .nav-links a:hover, .nav-links a.active {
+
+        .nav-links a:hover,
+        .nav-links a.active {
             color: var(--accent);
         }
+
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -157,9 +189,11 @@
             background: var(--accent);
             transition: width 0.3s;
         }
+
         .nav-links a.active::after {
             width: 100%;
         }
+
         .hamburger {
             display: none;
             flex-direction: column;
@@ -169,31 +203,37 @@
             border: none;
             padding: 0.5rem;
         }
+
         .hamburger span {
             width: 25px;
             height: 2px;
             background: var(--text);
             transition: var(--transition);
         }
+
         .hamburger.active span:nth-child(1) {
             transform: rotate(45deg) translate(5px, 5px);
         }
+
         .hamburger.active span:nth-child(2) {
             opacity: 0;
         }
+
         .hamburger.active span:nth-child(3) {
             transform: rotate(-45deg) translate(5px, -5px);
         }
+
         @media (max-width: 1024px) {
             .hamburger {
                 display: flex;
             }
+
             .nav-links {
                 position: absolute;
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: rgba(11,17,32,0.98);
+                background: rgba(11, 17, 32, 0.98);
                 backdrop-filter: blur(12px);
                 flex-direction: column;
                 padding: 1.5rem 2rem;
@@ -201,16 +241,19 @@
                 border-bottom: 1px solid var(--border);
                 display: none;
             }
+
             .nav-links.active {
                 display: flex;
             }
         }
+
         .hero {
             padding: 7rem 0 5rem;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
+
         .hero::before {
             content: "";
             position: absolute;
@@ -218,14 +261,21 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle at 50% 50%, rgba(0,194,255,0.08) 0%, transparent 50%);
+            background: radial-gradient(circle at 50% 50%, rgba(0, 194, 255, 0.08) 0%, transparent 50%);
             animation: rotate 25s linear infinite;
             pointer-events: none;
         }
+
         @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
+
         .hero h1 {
             font-size: clamp(3.5rem, 8vw, 6rem);
             font-weight: 800;
@@ -236,23 +286,27 @@
             background-clip: text;
             margin-bottom: 1.5rem;
         }
+
         .hero .subtitle {
             font-size: 1.4rem;
             color: var(--text-muted);
             margin-bottom: 0.5rem;
         }
+
         .hero .desc {
             font-size: 1.1rem;
             color: #7f8ea3;
             max-width: 650px;
             margin: 0 auto 2.5rem;
         }
+
         .hero-buttons {
             display: flex;
             gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
         }
+
         .card {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -260,52 +314,61 @@
             padding: 2rem;
             transition: var(--transition);
         }
+
         .card:hover {
             transform: translateY(-4px);
             box-shadow: var(--glow);
             border-color: var(--accent-soft);
         }
+
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
+
         .feature-card {
             display: flex;
             gap: 1rem;
             align-items: flex-start;
         }
+
         .feature-icon {
             flex-shrink: 0;
             width: 48px;
             height: 48px;
-            background: rgba(0,194,255,0.1);
+            background: rgba(0, 194, 255, 0.1);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
+
         .feature-icon svg {
             width: 26px;
             height: 26px;
             fill: var(--accent);
         }
+
         .feature-text h3 {
             font-size: 1.1rem;
             margin-bottom: 0.3rem;
             color: #fff;
         }
+
         .feature-text p {
             font-size: 0.9rem;
             color: var(--text-muted);
         }
+
         .platform-badges {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
             margin-top: 2rem;
         }
+
         .badge {
             background: var(--surface-light);
             border: 1px solid var(--border);
@@ -317,14 +380,17 @@
             gap: 0.5rem;
             transition: var(--transition);
         }
+
         .badge:hover {
             border-color: var(--accent);
-            background: rgba(0,194,255,0.05);
+            background: rgba(0, 194, 255, 0.05);
         }
+
         .table-wrapper {
             overflow-x: auto;
             margin-top: 2rem;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -332,31 +398,38 @@
             border-radius: var(--radius);
             overflow: hidden;
         }
-        th, td {
+
+        th,
+        td {
             padding: 1rem 1.5rem;
             text-align: left;
             border-bottom: 1px solid var(--border);
         }
+
         th {
             background: var(--surface-light);
             color: var(--accent);
             font-weight: 600;
         }
+
         tr:last-child td {
             border-bottom: none;
         }
+
         .accordion {
             display: flex;
             flex-direction: column;
             gap: 1rem;
             margin-top: 2rem;
         }
+
         .accordion-item {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius);
             overflow: hidden;
         }
+
         .accordion-header {
             width: 100%;
             background: transparent;
@@ -371,25 +444,31 @@
             align-items: center;
             cursor: pointer;
         }
+
         .accordion-header span {
             transition: transform var(--transition);
         }
+
         .accordion-header.active span {
             transform: rotate(45deg);
         }
+
         .accordion-body {
             padding: 0 1.5rem 1.5rem;
             color: var(--text-muted);
             display: none;
         }
+
         .accordion-body.open {
             display: block;
         }
+
         .timeline {
             margin-top: 2rem;
             position: relative;
             padding-left: 2rem;
         }
+
         .timeline::before {
             content: "";
             position: absolute;
@@ -399,11 +478,13 @@
             width: 2px;
             background: var(--border);
         }
+
         .timeline-item {
             position: relative;
             margin-bottom: 3rem;
             padding-left: 2rem;
         }
+
         .timeline-item::before {
             content: "";
             position: absolute;
@@ -415,32 +496,38 @@
             border-radius: 50%;
             box-shadow: 0 0 12px var(--accent);
         }
+
         .update-card {
             background: var(--surface);
             border-radius: var(--radius);
             padding: 2rem;
             border: 1px solid var(--border);
         }
+
         .update-card h3 {
             color: var(--accent);
             font-size: 1.3rem;
             margin-bottom: 0.8rem;
         }
+
         .update-card .subtitle {
             color: var(--text-muted);
             font-size: 1rem;
             margin-bottom: 1.2rem;
         }
+
         .update-card ul {
             list-style: none;
             padding-left: 0;
         }
+
         .update-card li {
             position: relative;
             padding-left: 1.5rem;
             margin-bottom: 0.5rem;
             color: var(--text-muted);
         }
+
         .update-card li::before {
             content: "•";
             position: absolute;
@@ -448,6 +535,7 @@
             color: var(--accent);
             font-weight: bold;
         }
+
         .support-card {
             background: var(--surface);
             border-radius: var(--radius);
@@ -458,6 +546,7 @@
             flex-wrap: wrap;
             margin-top: 2rem;
         }
+
         .discord-id {
             background: #5865F2;
             color: white;
@@ -468,9 +557,10 @@
             align-items: center;
             gap: 0.5rem;
         }
+
         .copy-btn {
             background: transparent;
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
             padding: 0.4rem 1rem;
             border-radius: 50px;
@@ -479,40 +569,49 @@
             transition: var(--transition);
             margin-left: 0.5rem;
         }
+
         .copy-btn:hover {
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.15);
         }
+
         footer {
             text-align: center;
             padding: 2.5rem;
             color: var(--text-muted);
             border-top: 1px solid var(--border);
         }
+
         .fade-up {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
+
         .fade-up.visible {
             opacity: 1;
             transform: translateY(0);
         }
+
         @media (max-width: 768px) {
             .section {
                 padding: 3rem 0;
             }
+
             h2 {
                 font-size: 1.8rem;
             }
+
             .hero h1 {
                 font-size: 3rem;
             }
+
             .feature-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
+
 <body>
     <nav id="navbar">
         <div class="nav-container">
@@ -543,9 +642,11 @@
         <div class="container">
             <h1>EJ_Core</h1>
             <p class="subtitle">Advanced All-in-One Minecraft Core Plugin</p>
-            <p class="desc">A powerful, fully configurable core solution built for modern Minecraft servers. Streamline administration, enhance gameplay, and unify essential systems in one premium plugin.</p>
+            <p class="desc">A powerful, fully configurable core solution built for modern Minecraft servers. Streamline
+                administration, enhance gameplay, and unify essential systems in one premium plugin.</p>
             <div class="hero-buttons">
-                <a href="https://builtbybit.com/resources/ej-core-all-in-one-core.117277/" target="_blank" class="btn btn-primary">Buy on BuiltByBit</a>
+                <a href="https://builtbybit.com/resources/ej-core-all-in-one-core.117277/" target="_blank"
+                    class="btn btn-primary">Buy on BuiltByBit</a>
                 <a href="#features" class="btn btn-outline">View Documentation</a>
             </div>
         </div>
@@ -554,7 +655,11 @@
     <section id="about" class="section section-alt">
         <div class="container fade-up">
             <h2>About EJ_Core</h2>
-            <p style="max-width:800px;color:var(--text-muted);font-size:1.1rem;">EJ_Core is a meticulously engineered core plugin designed for Minecraft server owners who demand reliability, performance, and a unified administrative experience. It replaces dozens of fragmented plugins with a single cohesive system, offering everything from teleportation and economy to advanced anti‑cheat and GUI menus. Built for Paper, Spigot, and Folia with seamless integration into the modern Minecraft ecosystem.</p>
+            <p style="max-width:800px;color:var(--text-muted);font-size:1.1rem;">EJ_Core is a meticulously engineered
+                core plugin designed for Minecraft server owners who demand reliability, performance, and a unified
+                administrative experience. It replaces dozens of fragmented plugins with a single cohesive system,
+                offering everything from teleportation and economy to advanced anti‑cheat and GUI menus. Built for
+                Paper, Spigot, and Folia with seamless integration into the modern Minecraft ecosystem.</p>
         </div>
     </section>
 
@@ -562,28 +667,220 @@
         <div class="container fade-up">
             <h2>Key Features</h2>
             <div class="feature-grid">
-                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div><div class="feature-text"><h3>Homes</h3><p>Multiple home locations per player with GUI management.</p></div></div>
-                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg></div><div class="feature-text"><h3>Spawn</h3><p>Multiple spawn points, per-world settings, and join actions.</p></div></div>
-                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z"/></svg></div><div class="feature-text"><h3>Warps</h3><p>Custom warp locations with GUI and permission control.</p></div></div>
-                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M15 10l-4 4l-4-4"/></svg></div><div class="feature-text"><h3>TPA System</h3><p>Full teleport request system with accept/deny and auto modes.</p></div></div>
-                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg></div><div class="feature-text"><h3>Economy</h3><p>Integrated economy with Vault support, payments, and baltop.</p></div></div>
-                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2z"/></svg></div><div class="feature-text"><h3>Chat System</h3><p>Formatted chat, mentions, anti‑spam, blocked words, and cooldowns.</p></div></div>
-                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg></div><div class="feature-text"><h3>Staff Tools</h3><p>Freeze, god mode, fly, heal, feed, inventory viewer, and more.</p></div></div>
-                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.49.49 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94L14.4 3.4a.5.5 0 00-.48-.4H9.6a.5.5 0 00-.48.4l-.36 2.7c-.59.24-1.13.57-1.62.94l-2.39-.96a.49.49 0 00-.59.22L2.84 9.04c-.12.2-.07.44.12.61l2.03 1.58c-.04.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.7c.04.24.24.4.48.4h3.84c.24 0 .44-.16.48-.4l.36-2.7c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.44-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg></div><div class="feature-text"><h3>Admin Utilities</h3><p>Powerful admin commands, gamemode shortcuts, and crash tool.</p></div></div>
-                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M3 21v-4h18v4H3zm0-6v-4h18v4H3zm0-6V5h18v4H3z"/></svg></div><div class="feature-text"><h3>Broadcasts</h3><p>Automated announcements with sounds, titles, and action bars.</p></div></div>
-                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg></div><div class="feature-text"><h3>Settings Menu</h3><p>Per‑player togglable settings via interactive GUI.</p></div></div>
-                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M16 11V3H8v8H2v10h20V11h-6zm-6 8h-2v-6h2v6zm6 0h-2v-6h2v6z"/></svg></div><div class="feature-text"><h3>Player Statistics</h3><p>Track playtime, blocks, mobs, deaths, and more.</p></div></div>
-                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg></div><div class="feature-text"><h3>Reports</h3><p>Player and server reporting with admin notifications.</p></div></div>
-                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div><div class="feature-text"><h3>Join/Quit Features</h3><p>Custom join/quit messages, first‑join tracker, avatar heads, and more.</p></div></div>
-                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2l-5.5 9h11L12 2zm0 3.84L13.93 9h-3.87L12 5.84zM17.5 13c-2.49 0-4.5 2.01-4.5 4.5s2.01 4.5 4.5 4.5 4.5-2.01 4.5-4.5-2.01-4.5-4.5-4.5zm0 7c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zM3 21.5h8v-8H3v8zm2-6h4v4H5v-4z"/></svg></div><div class="feature-text"><h3>Protection & Anti‑Exploit</h3><p>Anti‑Xray, ghost block fixer, crystal accelerator, account protection, and anti‑ESP.</p></div></div>
-                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 2h2v6h-2V5zm0 8h2v2h-2v-2z"/></svg></div><div class="feature-text"><h3>GUI Menus</h3><p>Fully configurable dynamic menus with custom commands and actions.</p></div></div>
-                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.49.49 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94L14.4 3.4a.5.5 0 00-.48-.4H9.6a.5.5 0 00-.48.4l-.36 2.7c-.59.24-1.13.57-1.62.94l-2.39-.96a.49.49 0 00-.59.22L2.84 9.04c-.12.2-.07.44.12.61l2.03 1.58c-.04.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.7c.04.24.24.4.48.4h3.84c.24 0 .44-.16.48-.4l.36-2.7c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.44-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg></div><div class="feature-text"><h3>PlaceholderAPI Support</h3><p>Expose countless placeholders for seamless integration.</p></div></div>
-                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg></div><div class="feature-text"><h3>Vault Support</h3><p>Full economy integration with any Vault‑compatible provider.</p></div></div>
-                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div><div class="feature-text"><h3>LuckPerms Support</h3><p>Prefixes, groups, and context‑aware chat formatting.</p></div></div>
-                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div><div class="feature-text"><h3>Packet‑Based Features</h3><p>Advanced packet handling for anti‑cheat and performance.</p></div></div>
-                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 2h2v6h-2V5zm0 8h2v2h-2v-2z"/></svg></div><div class="feature-text"><h3>bStats Integration</h3><p>Anonymous usage statistics for continuous improvement.</p></div></div>
-                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 2h2v6h-2V5zm0 8h2v2h-2v-2z"/></svg></div><div class="feature-text"><h3>Highly Configurable</h3><p>Extensive YAML configuration files with per‑feature toggles.</p></div></div>
-                <div class="card feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.59-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z"/></svg></div><div class="feature-text"><h3>Performance Optimized</h3><p>Asynchronous operations, smart caching, and Folia compatibility.</p></div></div>
+                <div class="card feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24">
+                            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                        </svg></div>
+                    <div class="feature-text">
+                        <h3>Homes</h3>
+                        <p>Multiple home locations per player with GUI management.</p>
+                    </div>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="10" r="3" />
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                        </svg></div>
+                    <div class="feature-text">
+                        <h3>Spawn</h3>
+                        <p>Multiple spawn points, per-world settings, and join actions.</p>
+                    </div>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24">
+                            <path d="M12 2L2 22h20L12 2z" />
+                        </svg></div>
+                    <div class="feature-text">
+                        <h3>Warps</h3>
+                        <p>Custom warp locations with GUI and permission control.</p>
+                    </div>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24">
+                            <path d="M15 10l-4 4l-4-4" />
+                        </svg></div>
+                    <div class="feature-text">
+                        <h3>TPA System</h3>
+                        <p>Full teleport request system with accept/deny and auto modes.</p>
+                    </div>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="8" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg></div>
+                    <div class="feature-text">
+                        <h3>Economy</h3>
+                        <p>Integrated economy with Vault support, payments, and baltop.</p>
+                    </div>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24">
+                            <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2z" />
+                        </svg></div>
+                    <div class="feature-text">
+                        <h3>Chat System</h3>
+                        <p>Formatted chat, mentions, anti‑spam, blocked words, and cooldowns.</p>
+                    </div>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
+                        </svg></div>
+                    <div class="feature-text">
+                        <h3>Staff Tools</h3>
+                        <p>Freeze, god mode, fly, heal, feed, inventory viewer, and more.</p>
+                    </div>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24">
+                            <path
+                                d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.49.49 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94L14.4 3.4a.5.5 0 00-.48-.4H9.6a.5.5 0 00-.48.4l-.36 2.7c-.59.24-1.13.57-1.62.94l-2.39-.96a.49.49 0 00-.59.22L2.84 9.04c-.12.2-.07.44.12.61l2.03 1.58c-.04.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.7c.04.24.24.4.48.4h3.84c.24 0 .44-.16.48-.4l.36-2.7c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.44-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" />
+                        </svg></div>
+                    <div class="feature-text">
+                        <h3>Admin Utilities</h3>
+                        <p>Powerful admin commands, gamemode shortcuts, and crash tool.</p>
+                    </div>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24">
+                            <path d="M3 21v-4h18v4H3zm0-6v-4h18v4H3zm0-6V5h18v4H3z" />
+                        </svg></div>
+                    <div class="feature-text">
+                        <h3>Broadcasts</h3>
+                        <p>Automated announcements with sounds, titles, and action bars.</p>
+                    </div>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24">
+                            <path
+                                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z" />
+                        </svg></div>
+                    <div class="feature-text">
+                        <h3>Settings Menu</h3>
+                        <p>Per‑player togglable settings via interactive GUI.</p>
+                    </div>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24">
+                            <path d="M16 11V3H8v8H2v10h20V11h-6zm-6 8h-2v-6h2v6zm6 0h-2v-6h2v6z" />
+                        </svg></div>
+                    <div class="feature-text">
+                        <h3>Player Statistics</h3>
+                        <p>Track playtime, blocks, mobs, deaths, and more.</p>
+                    </div>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24">
+                            <path
+                                d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" />
+                        </svg></div>
+                    <div class="feature-text">
+                        <h3>Reports</h3>
+                        <p>Player and server reporting with admin notifications.</p>
+                    </div>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                        </svg></div>
+                    <div class="feature-text">
+                        <h3>Join/Quit Features</h3>
+                        <p>Custom join/quit messages, first‑join tracker, avatar heads, and more.</p>
+                    </div>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l-5.5 9h11L12 2zm0 3.84L13.93 9h-3.87L12 5.84zM17.5 13c-2.49 0-4.5 2.01-4.5 4.5s2.01 4.5 4.5 4.5 4.5-2.01 4.5-4.5-2.01-4.5-4.5-4.5zm0 7c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zM3 21.5h8v-8H3v8zm2-6h4v4H5v-4z" />
+                        </svg></div>
+                    <div class="feature-text">
+                        <h3>Protection & Anti‑Exploit</h3>
+                        <p>Anti‑Xray, ghost block fixer, crystal accelerator, account protection, and anti‑ESP.</p>
+                    </div>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24">
+                            <path
+                                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 2h2v6h-2V5zm0 8h2v2h-2v-2z" />
+                        </svg></div>
+                    <div class="feature-text">
+                        <h3>GUI Menus</h3>
+                        <p>Fully configurable dynamic menus with custom commands and actions.</p>
+                    </div>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24">
+                            <path
+                                d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.49.49 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94L14.4 3.4a.5.5 0 00-.48-.4H9.6a.5.5 0 00-.48.4l-.36 2.7c-.59.24-1.13.57-1.62.94l-2.39-.96a.49.49 0 00-.59.22L2.84 9.04c-.12.2-.07.44.12.61l2.03 1.58c-.04.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.7c.04.24.24.4.48.4h3.84c.24 0 .44-.16.48-.4l.36-2.7c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.44-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" />
+                        </svg></div>
+                    <div class="feature-text">
+                        <h3>PlaceholderAPI Support</h3>
+                        <p>Expose countless placeholders for seamless integration.</p>
+                    </div>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+                        </svg></div>
+                    <div class="feature-text">
+                        <h3>Vault Support</h3>
+                        <p>Full economy integration with any Vault‑compatible provider.</p>
+                    </div>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                        </svg></div>
+                    <div class="feature-text">
+                        <h3>LuckPerms Support</h3>
+                        <p>Prefixes, groups, and context‑aware chat formatting.</p>
+                    </div>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                        </svg></div>
+                    <div class="feature-text">
+                        <h3>Packet‑Based Features</h3>
+                        <p>Advanced packet handling for anti‑cheat and performance.</p>
+                    </div>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24">
+                            <path
+                                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 2h2v6h-2V5zm0 8h2v2h-2v-2z" />
+                        </svg></div>
+                    <div class="feature-text">
+                        <h3>bStats Integration</h3>
+                        <p>Anonymous usage statistics for continuous improvement.</p>
+                    </div>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24">
+                            <path
+                                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 2h2v6h-2V5zm0 8h2v2h-2v-2z" />
+                        </svg></div>
+                    <div class="feature-text">
+                        <h3>Highly Configurable</h3>
+                        <p>Extensive YAML configuration files with per‑feature toggles.</p>
+                    </div>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon"><svg viewBox="0 0 24 24">
+                            <path
+                                d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.59-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z" />
+                        </svg></div>
+                    <div class="feature-text">
+                        <h3>Performance Optimized</h3>
+                        <p>Asynchronous operations, smart caching, and Folia compatibility.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -592,11 +889,21 @@
         <div class="container fade-up">
             <h2>Supported Platforms</h2>
             <div class="platform-badges">
-                <span class="badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent)"><circle cx="12" cy="12" r="10"/></svg> Bukkit</span>
-                <span class="badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent)"><circle cx="12" cy="12" r="10"/></svg> Spigot</span>
-                <span class="badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent)"><circle cx="12" cy="12" r="10"/></svg> Paper</span>
-                <span class="badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent)"><circle cx="12" cy="12" r="10"/></svg> Folia</span>
-                <span class="badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent)"><circle cx="12" cy="12" r="10"/></svg> Purpur</span>
+                <span class="badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent)">
+                        <circle cx="12" cy="12" r="10" />
+                    </svg> Bukkit</span>
+                <span class="badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent)">
+                        <circle cx="12" cy="12" r="10" />
+                    </svg> Spigot</span>
+                <span class="badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent)">
+                        <circle cx="12" cy="12" r="10" />
+                    </svg> Paper</span>
+                <span class="badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent)">
+                        <circle cx="12" cy="12" r="10" />
+                    </svg> Folia</span>
+                <span class="badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent)">
+                        <circle cx="12" cy="12" r="10" />
+                    </svg> Purpur</span>
             </div>
         </div>
     </section>
@@ -605,10 +912,13 @@
         <div class="container fade-up">
             <h2>Installation</h2>
             <ol style="max-width:700px;color:var(--text-muted);font-size:1.1rem;list-style-position:inside;">
-                <li>Purchase and download <strong>EJ_Core</strong> from <a href="https://builtbybit.com/resources/ej-core-all-in-one-core.117277/" style="color:var(--accent);">BuiltByBit</a>.</li>
+                <li>Purchase and download <strong>EJ_Core</strong> from <a
+                        href="https://builtbybit.com/resources/ej-core-all-in-one-core.117277/"
+                        style="color:var(--accent);">BuiltByBit</a>.</li>
                 <li>Place the <strong>EJ_Core.jar</strong> file into your server's <code>/plugins</code> folder.</li>
                 <li>Restart your server (or use a plugin manager).</li>
-                <li>Edit the generated configuration files inside <code>/plugins/EJ_Core/</code> to suit your needs.</li>
+                <li>Edit the generated configuration files inside <code>/plugins/EJ_Core/</code> to suit your needs.
+                </li>
                 <li>Reload the plugin with <code>/ej_core reload</code> or restart the server.</li>
             </ol>
         </div>
@@ -617,7 +927,10 @@
     <section id="getting-started" class="section section-alt">
         <div class="container fade-up">
             <h2>Getting Started</h2>
-            <p style="max-width:800px;color:var(--text-muted);font-size:1.1rem;">After installation, configure the core settings in <code>config.yml</code>. Enable the features you want, set up spawn points, warps, and permissions. Use <code>/ej_core reload</code> to apply changes instantly. Explore the <strong>Settings Menu</strong> via <code>/settings</code> to personalize player experience.</p>
+            <p style="max-width:800px;color:var(--text-muted);font-size:1.1rem;">After installation, configure the core
+                settings in <code>config.yml</code>. Enable the features you want, set up spawn points, warps, and
+                permissions. Use <code>/ej_core reload</code> to apply changes instantly. Explore the <strong>Settings
+                    Menu</strong> via <code>/settings</code> to personalize player experience.</p>
         </div>
     </section>
 
@@ -626,25 +939,81 @@
             <h2>Commands</h2>
             <div class="table-wrapper">
                 <table>
-                    <thead><tr><th>Command</th><th>Description</th></tr></thead>
+                    <thead>
+                        <tr>
+                            <th>Command</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
                     <tbody>
-                        <tr><td>/ej_core reload</td><td>Reload all configuration files</td></tr>
-                        <tr><td>/home [id]</td><td>Open home menu or teleport to a home</td></tr>
-                        <tr><td>/spawn [name]</td><td>Teleport to spawn or open spawn GUI</td></tr>
-                        <tr><td>/warp [name]</td><td>Teleport to warp or open warp GUI</td></tr>
-                        <tr><td>/tpa &lt;player&gt;</td><td>Request to teleport to a player</td></tr>
-                        <tr><td>/tpaccept</td><td>Accept a teleport request</td></tr>
-                        <tr><td>/bed</td><td>Teleport to your bed</td></tr>
-                        <tr><td>/fly [speed]</td><td>Toggle flight or set speed</td></tr>
-                        <tr><td>/god [player]</td><td>Toggle god mode</td></tr>
-                        <tr><td>/heal [player]</td><td>Heal yourself or another player</td></tr>
-                        <tr><td>/freeze &lt;player&gt;</td><td>Freeze or unfreeze a player</td></tr>
-                        <tr><td>/pay &lt;player&gt; &lt;amount&gt;</td><td>Send money to a player</td></tr>
-                        <tr><td>/balance</td><td>Check your balance</td></tr>
-                        <tr><td>/baltop</td><td>View top balances</td></tr>
-                        <tr><td>/msg &lt;player&gt; &lt;message&gt;</td><td>Send a private message</td></tr>
-                        <tr><td>/report &lt;player|server&gt; &lt;reason&gt;</td><td>Submit a report</td></tr>
-                        <tr><td>/settings</td><td>Open personal settings GUI</td></tr>
+                        <tr>
+                            <td>/ej_core reload</td>
+                            <td>Reload all configuration files</td>
+                        </tr>
+                        <tr>
+                            <td>/home [id]</td>
+                            <td>Open home menu or teleport to a home</td>
+                        </tr>
+                        <tr>
+                            <td>/spawn [name]</td>
+                            <td>Teleport to spawn or open spawn GUI</td>
+                        </tr>
+                        <tr>
+                            <td>/warp [name]</td>
+                            <td>Teleport to warp or open warp GUI</td>
+                        </tr>
+                        <tr>
+                            <td>/tpa &lt;player&gt;</td>
+                            <td>Request to teleport to a player</td>
+                        </tr>
+                        <tr>
+                            <td>/tpaccept</td>
+                            <td>Accept a teleport request</td>
+                        </tr>
+                        <tr>
+                            <td>/bed</td>
+                            <td>Teleport to your bed</td>
+                        </tr>
+                        <tr>
+                            <td>/fly [speed]</td>
+                            <td>Toggle flight or set speed</td>
+                        </tr>
+                        <tr>
+                            <td>/god [player]</td>
+                            <td>Toggle god mode</td>
+                        </tr>
+                        <tr>
+                            <td>/heal [player]</td>
+                            <td>Heal yourself or another player</td>
+                        </tr>
+                        <tr>
+                            <td>/freeze &lt;player&gt;</td>
+                            <td>Freeze or unfreeze a player</td>
+                        </tr>
+                        <tr>
+                            <td>/pay &lt;player&gt; &lt;amount&gt;</td>
+                            <td>Send money to a player</td>
+                        </tr>
+                        <tr>
+                            <td>/balance</td>
+                            <td>Check your balance</td>
+                        </tr>
+                        <tr>
+                            <td>/baltop</td>
+                            <td>View top balances</td>
+                        </tr>
+                        <tr>
+                            <td>/msg &lt;player&gt; &lt;message&gt;</td>
+                            <td>Send a private message</td>
+                        </tr>
+                        <tr>
+                            <td>/report &lt;player|server&gt; &lt;reason&gt;</td>
+                            <td>Submit a report</td>
+                        </tr>
+                        <tr>
+                            <td>/settings</td>
+                            <td>Open personal settings GUI</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -656,13 +1025,33 @@
             <h2>Permissions</h2>
             <div class="table-wrapper">
                 <table>
-                    <thead><tr><th>Permission</th><th>Description</th></tr></thead>
+                    <thead>
+                        <tr>
+                            <th>Permission</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
                     <tbody>
-                        <tr><td>ejcore.admin</td><td>Access to all admin commands</td></tr>
-                        <tr><td>ejcore.fly</td><td>Use /fly command</td></tr>
-                        <tr><td>ejcore.repair</td><td>Use /repair command</td></tr>
-                        <tr><td>ejcore.doublejump</td><td>Use double jump feature</td></tr>
-                        <tr><td>ejcore.home.limit.X</td><td>Set max home slots (X = number)</td></tr>
+                        <tr>
+                            <td>ejcore.admin</td>
+                            <td>Access to all admin commands</td>
+                        </tr>
+                        <tr>
+                            <td>ejcore.fly</td>
+                            <td>Use /fly command</td>
+                        </tr>
+                        <tr>
+                            <td>ejcore.repair</td>
+                            <td>Use /repair command</td>
+                        </tr>
+                        <tr>
+                            <td>ejcore.doublejump</td>
+                            <td>Use double jump feature</td>
+                        </tr>
+                        <tr>
+                            <td>ejcore.home.limit.X</td>
+                            <td>Set max home slots (X = number)</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -700,22 +1089,30 @@
                             <li>Various bug fixes and stability enhancements</li>
                         </ul>
                         <p style="color:var(--text); font-weight:600; margin-top:1rem;">&#9888; Beta Version</p>
-                        <p style="color:var(--text-muted);">This is a Beta release. Although everything has been carefully tested, some issues may still exist. If you find any bugs or experience unexpected behavior, please report them so they can be fixed in the next update.</p>
-                        <p style="margin-top:0.8rem;color:var(--text-muted);">&#128231; Contact &mdash; Discord: erfan_999</p>
-                        <p style="color:var(--text-muted);margin-top:0.4rem;">&#10084;&#65039; Thank you for supporting the project and being part of the EJ_Core community!</p>
+                        <p style="color:var(--text-muted);">This is a Beta release. Although everything has been
+                            carefully tested, some issues may still exist. If you find any bugs or experience unexpected
+                            behavior, please report them so they can be fixed in the next update.</p>
+                        <p style="margin-top:0.8rem;color:var(--text-muted);">&#128231; Contact &mdash; Discord:
+                            erfan_999</p>
+                        <p style="color:var(--text-muted);margin-top:0.4rem;">&#10084;&#65039; Thank you for supporting
+                            the project and being part of the EJ_Core community!</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="update-card">
                         <h3>v1.0-Release &mdash; Stability &amp; Bug Fixes</h3>
                         <p class="subtitle">EJ_Core v1.0-Release is now available!</p>
-                        <p style="color:var(--text);">This update focuses on improving stability, fixing reported bugs, and polishing several core features.</p>
+                        <p style="color:var(--text);">This update focuses on improving stability, fixing reported bugs,
+                            and polishing several core features.</p>
                         <p style="color:var(--text); font-weight:600;">&#128027; Bug Fixes</p>
                         <ul>
-                            <li>Fixed an issue where the plugin could fail to run correctly if Simple Voice Chat was not installed.</li>
-                            <li>Fixed incorrect detection that could kick Fabric players by identifying them as Vanilla clients.</li>
+                            <li>Fixed an issue where the plugin could fail to run correctly if Simple Voice Chat was not
+                                installed.</li>
+                            <li>Fixed incorrect detection that could kick Fabric players by identifying them as Vanilla
+                                clients.</li>
                             <li>Fixed an issue where Homes were not saved after a server restart.</li>
-                            <li>Fixed Public Chat settings so that when Public Chat is disabled, players can no longer send messages or use mentions.</li>
+                            <li>Fixed Public Chat settings so that when Public Chat is disabled, players can no longer
+                                send messages or use mentions.</li>
                             <li>Fixed placeholder loading issues in several Spawn and Warp messages.</li>
                             <li>Fixed unnecessary warnings that appeared after server startup.</li>
                             <li>Fixed missing messages for the /tpa and /bed commands.</li>
@@ -743,27 +1140,34 @@
             <div class="accordion">
                 <div class="accordion-item">
                     <button class="accordion-header">Does EJ_Core support Folia? <span>+</span></button>
-                    <div class="accordion-body">Yes, EJ_Core is fully compatible with Folia as well as Paper and Spigot.</div>
+                    <div class="accordion-body">Yes, EJ_Core is fully compatible with Folia as well as Paper and Spigot.
+                    </div>
                 </div>
                 <div class="accordion-item">
                     <button class="accordion-header">Does it require Vault? <span>+</span></button>
-                    <div class="accordion-body">Vault is optional. Economy features are only enabled if Vault and an economy plugin are present.</div>
+                    <div class="accordion-body">Vault is optional. Economy features are only enabled if Vault and an
+                        economy plugin are present.</div>
                 </div>
                 <div class="accordion-item">
                     <button class="accordion-header">Does it support PlaceholderAPI? <span>+</span></button>
-                    <div class="accordion-body">Absolutely. EJ_Core provides many placeholders and fully supports PlaceholderAPI in messages.</div>
+                    <div class="accordion-body">Absolutely. EJ_Core provides many placeholders and fully supports
+                        PlaceholderAPI in messages.</div>
                 </div>
                 <div class="accordion-item">
                     <button class="accordion-header">Is it configurable? <span>+</span></button>
-                    <div class="accordion-body">Every feature can be toggled and customized via comprehensive YAML files.</div>
+                    <div class="accordion-body">Every feature can be toggled and customized via comprehensive YAML
+                        files.</div>
                 </div>
                 <div class="accordion-item">
-                    <button class="accordion-header">Is it suitable for modern Minecraft servers? <span>+</span></button>
-                    <div class="accordion-body">Yes, it is built for 1.21.x and designed with modern server software in mind.</div>
+                    <button class="accordion-header">Is it suitable for modern Minecraft servers?
+                        <span>+</span></button>
+                    <div class="accordion-body">Yes, it is built for 1.21.x and designed with modern server software in
+                        mind.</div>
                 </div>
                 <div class="accordion-item">
                     <button class="accordion-header">How do I get support? <span>+</span></button>
-                    <div class="accordion-body">Reach out on Discord: <strong style="color:var(--accent);">erfan_999</strong> or check the Support section below.</div>
+                    <div class="accordion-body">Reach out on Discord: <strong
+                            style="color:var(--accent);">erfan_999</strong> or check the Support section below.</div>
                 </div>
             </div>
         </div>
@@ -774,13 +1178,18 @@
             <h2>Support</h2>
             <div class="support-card">
                 <div>
-                    <p style="font-size:1.1rem;margin-bottom:1rem;">Need help? Contact the developer directly on Discord.</p>
+                    <p style="font-size:1.1rem;margin-bottom:1rem;">Need help? Contact the developer directly on
+                        Discord.</p>
                     <div style="display:flex;align-items:center;flex-wrap:wrap;gap:1rem;">
                         <span class="discord-id">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M20.32 4.37a19.5 19.5 0 0 0-4.81-1.5.07.07 0 0 0-.08.04 13.4 13.4 0 0 0-.59 1.2 18.1 18.1 0 0 0-5.41 0 13.4 13.4 0 0 0-.6-1.2.07.07 0 0 0-.08-.04 19.5 19.5 0 0 0-4.81 1.5.07.07 0 0 0-.03.02C1.24 8.87.62 13.2.97 17.48a.08.08 0 0 0 .03.05 19.8 19.8 0 0 0 5.98 3.01.07.07 0 0 0 .08-.03 14.2 14.2 0 0 0 1.23-2 .07.07 0 0 0-.04-.1 13.1 13.1 0 0 1-1.88-.9.07.07 0 0 1 0-.12 9.9 9.9 0 0 0 .37-.29.07.07 0 0 1 .08 0 14.1 14.1 0 0 0 11.98 0 .07.07 0 0 1 .08 0c.13.11.25.22.38.3a.07.07 0 0 1 0 .11 13.1 13.1 0 0 1-1.88.9.07.07 0 0 0-.04.1c.37.73.78 1.4 1.23 2a.07.07 0 0 0 .08.03 19.7 19.7 0 0 0 5.99-3.01.07.07 0 0 0 .03-.05c.41-4.93-.68-9.2-2.87-13.09a.07.07 0 0 0-.03-.02ZM8.62 14.97c-.96 0-1.75-.89-1.75-1.97 0-1.08.77-1.97 1.75-1.97s1.77.89 1.75 1.97c0 1.08-.77 1.97-1.75 1.97Zm6.76 0c-.96 0-1.75-.89-1.75-1.97 0-1.08.77-1.97 1.75-1.97s1.77.89 1.75 1.97c0 1.08-.78 1.97-1.75 1.97Z"/></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                                <path
+                                    d="M20.32 4.37a19.5 19.5 0 0 0-4.81-1.5.07.07 0 0 0-.08.04 13.4 13.4 0 0 0-.59 1.2 18.1 18.1 0 0 0-5.41 0 13.4 13.4 0 0 0-.6-1.2.07.07 0 0 0-.08-.04 19.5 19.5 0 0 0-4.81 1.5.07.07 0 0 0-.03.02C1.24 8.87.62 13.2.97 17.48a.08.08 0 0 0 .03.05 19.8 19.8 0 0 0 5.98 3.01.07.07 0 0 0 .08-.03 14.2 14.2 0 0 0 1.23-2 .07.07 0 0 0-.04-.1 13.1 13.1 0 0 1-1.88-.9.07.07 0 0 1 0-.12 9.9 9.9 0 0 0 .37-.29.07.07 0 0 1 .08 0 14.1 14.1 0 0 0 11.98 0 .07.07 0 0 1 .08 0c.13.11.25.22.38.3a.07.07 0 0 1 0 .11 13.1 13.1 0 0 1-1.88.9.07.07 0 0 0-.04.1c.37.73.78 1.4 1.23 2a.07.07 0 0 0 .08.03 19.7 19.7 0 0 0 5.99-3.01.07.07 0 0 0 .03-.05c.41-4.93-.68-9.2-2.87-13.09a.07.07 0 0 0-.03-.02ZM8.62 14.97c-.96 0-1.75-.89-1.75-1.97 0-1.08.77-1.97 1.75-1.97s1.77.89 1.75 1.97c0 1.08-.77 1.97-1.75 1.97Zm6.76 0c-.96 0-1.75-.89-1.75-1.97 0-1.08.77-1.97 1.75-1.97s1.77.89 1.75 1.97c0 1.08-.78 1.97-1.75 1.97Z" />
+                            </svg>
                             erfan_999
                         </span>
-                        <button class="copy-btn" onclick="navigator.clipboard.writeText('erfan_999').then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',2000)})">Copy</button>
+                        <button class="copy-btn"
+                            onclick="navigator.clipboard.writeText('erfan_999').then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',2000)})">Copy</button>
                     </div>
                 </div>
             </div>
@@ -847,4 +1256,5 @@
         document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
     </script>
 </body>
+
 </html>
